@@ -1,10 +1,13 @@
+import os
 import matplotlib.pyplot as plt
 from shortest_path import shortest_path_routing
 from congestion_flow import congestion_aware_routing
 from network import build_network
 
+
 def run_experiment():
     G = build_network()
+
     sp_flows, _ = shortest_path_routing()
     ca_flows = congestion_aware_routing()
 
@@ -17,7 +20,10 @@ def run_experiment():
         sp_load.append(sp_flows.get(edge, 0) / G[edge[0]][edge[1]]["capacity"])
         ca_load.append(ca_flows.get(edge, 0) / G[edge[0]][edge[1]]["capacity"])
 
+    os.makedirs("figures", exist_ok=True)
+
     x = range(len(labels))
+    plt.figure(figsize=(10, 5))
     plt.bar(x, sp_load, width=0.4, label="Shortest path")
     plt.bar([i + 0.4 for i in x], ca_load, width=0.4, label="Congestion-aware")
 
@@ -26,3 +32,9 @@ def run_experiment():
     plt.legend()
     plt.tight_layout()
     plt.savefig("figures/comparison.png")
+    plt.close()
+
+
+if __name__ == "__main__":
+    run_experiment()
+
