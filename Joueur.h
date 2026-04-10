@@ -13,6 +13,7 @@ private:
     int hpMax;
     int attaque;
     int defense;
+    int victoire;
 
 public:
     Joueur(string n);

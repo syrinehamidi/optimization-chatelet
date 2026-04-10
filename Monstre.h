@@ -13,6 +13,7 @@ protected:
     int attaque;
     int defense;
     int mercy;
+    int mercyGoal;
 
 public:
     Monstre(string n, int h, int a, int d);

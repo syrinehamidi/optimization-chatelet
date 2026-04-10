@@ -59,7 +59,7 @@ void Combat::lancer() {
             continue;
         }
 
-        // Tour du monstre
+
         if (!monstre.estMort()) {
             cout << monstre.getNom() << " attaque !" << endl;
             joueur.recevoirDegats(monstre.getAttaque());

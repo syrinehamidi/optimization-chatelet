@@ -4,7 +4,7 @@ using namespace std;
 Jeu::Jeu(string nomJoueur) : joueur(nomJoueur) {}
 
 void Jeu::lancer() {
-    cout << "=== ALTERDUNE ===" << endl;
+    cout << "--- ALTERDUNE ---" << endl;
     joueur.afficher();
 
     MonstreNormal   m1("Monstre Normal", 30, 7, 1);
