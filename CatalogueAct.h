@@ -4,10 +4,11 @@
 #include <iostream>
 #include <vector>
 #include "ActionAct.h"
+using namespace std;
 
 class CatalogueAct {
 private:
-    std::vector<ActionAct> actions;
+    vector<ActionAct> actions;
 
 public:
     CatalogueAct() {
@@ -24,10 +25,10 @@ public:
     void afficherActions(int nombreMax) const {
         int affiche = 0;
         for (int i = 0; i < (int)actions.size() && affiche < nombreMax; i++, affiche++) {
-            std::cout << affiche + 1 << ". " << actions[i].id
+            cout << affiche + 1 << ". " << actions[i].id
                 << " - " << actions[i].texte
                 << "  (Mercy " << (actions[i].impactMercy > 0 ? "+" : "")
-                << actions[i].impactMercy << ")" << std::endl;
+                << actions[i].impactMercy << ")" << endl;
         }
     }
 

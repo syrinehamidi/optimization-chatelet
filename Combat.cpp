@@ -1,70 +1,71 @@
 #include "Combat.h"
+using namespace std;
 
 Combat::Combat(Joueur& j, Monstre& m, CatalogueAct& c)
     : joueur(j), monstre(m), catalogue(c) {
 }
 
 void Combat::lancer() {
-    std::cout << "\n=== COMBAT : " << monstre.getNom()
-        << " [" << monstre.getCategorie() << "] ===" << std::endl;
+    cout << "\n=== COMBAT : " << monstre.getNom()
+        << " [" << monstre.getCategorie() << "] ===" << endl;
 
     while (joueur.estVivant() && !monstre.estMort()) {
-        std::cout << "\n";
+        cout << "\n";
         joueur.afficher();
         monstre.afficher();
 
-        std::cout << "\n1. FIGHT  2. ACT  3. MERCY" << std::endl;
-        std::cout << "Choix : ";
+        cout << "\n1. FIGHT  2. ACT  3. MERCY" << endl;
+        cout << "Choix : ";
         int choix;
-        std::cin >> choix;
+        cin >> choix;
 
         if (choix == 1) {
             joueur.attaquerMonstre(monstre);
             if (monstre.estMort()) {
-                std::cout << monstre.getNom() << " est vaincu !" << std::endl;
+                cout << monstre.getNom() << " est vaincu !" << endl;
                 break;
             }
         }
         else if (choix == 2) {
             int nbAct = monstre.getNombreMaxAct();
             catalogue.afficherActions(nbAct);
-            std::cout << "Choisissez une action (1-" << nbAct << ") : ";
+            cout << "Choisissez une action (1-" << nbAct << ") : ";
             int choixAct;
-            std::cin >> choixAct;
+            cin >> choixAct;
             choixAct--;
             if (choixAct >= 0 && choixAct < nbAct) {
                 ActionAct action = catalogue.getAction(choixAct);
-                std::cout << action.texte << std::endl;
+                cout << action.texte << endl;
                 monstre.ajouterMercy(action.impactMercy);
             }
             else {
-                std::cout << "Action invalide." << std::endl;
+                cout << "Action invalide." << endl;
                 continue;
             }
         }
         else if (choix == 3) {
             if (monstre.estEpargnable()) {
-                std::cout << monstre.getNom() << " est epargne !" << std::endl;
+                cout << monstre.getNom() << " est epargne !" << endl;
                 break;
             }
             else {
-                std::cout << "Mercy insuffisant ("
-                    << monstre.getMercy() << "/100)." << std::endl;
+                cout << "Mercy insuffisant ("
+                    << monstre.getMercy() << "/100)." << endl;
                 continue;
             }
         }
         else {
-            std::cout << "Choix invalide." << std::endl;
+            cout << "Choix invalide." << endl;
             continue;
         }
 
         // Tour du monstre
         if (!monstre.estMort()) {
-            std::cout << monstre.getNom() << " attaque !" << std::endl;
+            cout << monstre.getNom() << " attaque !" << endl;
             joueur.recevoirDegats(monstre.getAttaque());
         }
     }
 
     if (!joueur.estVivant())
-        std::cout << "Vous avez perdu !" << std::endl;
+        cout << "Vous avez perdu !" << endl;
 }

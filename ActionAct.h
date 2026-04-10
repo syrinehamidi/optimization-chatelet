@@ -2,14 +2,15 @@
 #define ACTION_ACT_H
 
 #include <string>
+using namespace std;
 
 class ActionAct {
 public:
-    std::string id;
-    std::string texte;
+    string id;
+    string texte;
     int impactMercy;
 
-    ActionAct(std::string i, std::string t, int m)
+    ActionAct(string i, string t, int m)
         : id(i), texte(t), impactMercy(m) {
     }
 };

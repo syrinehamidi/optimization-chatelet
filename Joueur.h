@@ -4,17 +4,18 @@
 #include <iostream>
 #include <string>
 #include "Monstre.h"
+using namespace std;
 
 class Joueur {
 private:
-    std::string nom;
+    string nom;
     int hp;
     int hpMax;
     int attaque;
     int defense;
 
 public:
-    Joueur(std::string n);
+    Joueur(string n);
 
     void afficher() const;
     void attaquerMonstre(Monstre& monstre);

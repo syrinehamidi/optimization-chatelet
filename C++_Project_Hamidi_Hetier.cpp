@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
 #include "Jeu.h"
+using namespace std;
 
 int main() {
-    std::string nom;
+    string nom;
 
-    std::cout << "Nom du joueur : ";
-    std::getline(std::cin, nom);
+    cout << "Nom du joueur : ";
+    getline(std::cin, nom);
 
     Jeu jeu(nom);
     jeu.lancer();

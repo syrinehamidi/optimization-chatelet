@@ -9,6 +9,7 @@
 #include "BossMonstre.h"
 #include "Combat.h"
 #include "CatalogueAct.h"
+using namespace std;
 
 class Jeu {
 private:
@@ -16,7 +17,7 @@ private:
     CatalogueAct catalogue;
 
 public:
-    Jeu(std::string nomJoueur);
+    Jeu(string nomJoueur);
     void lancer();
 };
 

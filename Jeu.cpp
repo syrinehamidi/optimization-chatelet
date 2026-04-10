@@ -1,29 +1,29 @@
 #include "Jeu.h"
+using namespace std;
 
-Jeu::Jeu(std::string nomJoueur) : joueur(nomJoueur) {}
+Jeu::Jeu(string nomJoueur) : joueur(nomJoueur) {}
 
 void Jeu::lancer() {
-    std::cout << "=== ALTERDUNE ===" << std::endl;
+    cout << "=== ALTERDUNE ===" << endl;
     joueur.afficher();
 
-    // 3 monstres de categories differentes pour montrer le polymorphisme
-    MonstreNormal   m1("Miniboss", 30, 7, 1);
-    MiniBossMonstre m2("Boss", 45, 10, 2);
-    BossMonstre     m3("MegaBoss", 80, 15, 4);
+    MonstreNormal   m1("Monstre Normal", 30, 7, 1);
+    MiniBossMonstre m2("Mimi Boss Monstre", 45, 10, 2);
+    BossMonstre     m3("Boos Monstre", 80, 15, 4);
 
-    std::cout << "\n--- Combat 1 ---" << std::endl;
+    cout << "\n--- Combat 1 ---" << endl;
     Combat c1(joueur, m1, catalogue);
     c1.lancer();
 
     if (!joueur.estVivant()) return;
 
-    std::cout << "\n--- Combat 2 ---" << std::endl;
+    cout << "\n--- Combat 2 ---" << endl;
     Combat c2(joueur, m2, catalogue);
     c2.lancer();
 
     if (!joueur.estVivant()) return;
 
-    std::cout << "\n--- Combat 3 ---" << std::endl;
+    cout << "\n--- Combat 3 ---" << endl;
     Combat c3(joueur, m3, catalogue);
     c3.lancer();
 }

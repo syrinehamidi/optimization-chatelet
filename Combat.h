@@ -5,6 +5,7 @@
 #include "Joueur.h"
 #include "Monstre.h"
 #include "CatalogueAct.h"
+using namespace std;
 
 class Combat {
 private:
